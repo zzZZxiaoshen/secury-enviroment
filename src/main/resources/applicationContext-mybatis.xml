@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="wxappDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean id="DataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClass}"/>
         <property name="url" value="${jdbc.jdbcUrl}"/>
         <property name="username" value="${jdbc.username}"/>
@@ -23,44 +23,17 @@
         <property name="maxPoolPreparedStatementPerConnectionSize" value="${maxPoolPreparedStatementPerConnectionSize}"/>
     </bean>
 
-    <bean id="mallDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="driverClassName" value="${jdbc.driverClass}"/>
-        <property name="url" value="${jdbc.fsc.jdbcUrl}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-        <property name="filters" value="${filters}"/>
-        <property name="maxActive" value="${maxActive}"/>
-        <property name="initialSize" value="${initialSize}"/>
-        <property name="maxWait" value="${maxWait}"/>
-        <property name="minIdle" value="${minIdle}"/>
-        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
-        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
-        <property name="validationQuery" value="${validationQuery}"/>
-        <property name="testWhileIdle" value="${testWhileIdle}"/>
-        <property name="testOnBorrow" value="${testOnBorrow}"/>
-        <property name="testOnReturn" value="${testOnReturn}"/>
-        <property name="poolPreparedStatements" value="${poolPreparedStatements}"/>
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="${maxPoolPreparedStatementPerConnectionSize}"/>
+
+    <bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="DataSource" />
+        <property name="typeAliasesPackage" value="com.marsfood.domain"/>
     </bean>
 
-    <bean id="wxappSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="wxappDataSource" />
-        <property name="typeAliasesPackage" value="com.marsfood.domain.wxapp"/>
-    </bean>
-
-    <bean id="mallSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="mallDataSource" />
-        <property name="typeAliasesPackage" value="com.marsfood.domain.mall"/>
-    </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.marsfood.dao.wxapp" />
-        <property name="sqlSessionFactoryBeanName" value="wxappSqlSessionFactory"/>
+        <property name="basePackage" value="com.marsfood.dao" />
+        <property name="sqlSessionFactoryBeanName" value="SqlSessionFactory"/>
     </bean>
 
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.marsfood.dao.mall" />
-        <property name="sqlSessionFactoryBeanName" value="mallSqlSessionFactory"/>
-    </bean>
 
 </beans>

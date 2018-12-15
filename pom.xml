@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.marsfood</groupId>
-    <artifactId>marsfood-statistics</artifactId>
+    <groupId>com.pinghu</groupId>
+    <artifactId>secury-environment</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>marsfood-statistics</name>
+    <name>secury-environment</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -247,7 +247,7 @@
                 <version>2.1</version>
                 <configuration>
                     <port>8080</port>
-                    <path>/statistics</path>
+                    <path>/secury</path>
                     <uriEncoding>UTF-8</uriEncoding>
                     <finalName>web</finalName>
                     <server>tomcat7</server>
