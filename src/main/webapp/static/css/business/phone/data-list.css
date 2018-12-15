@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li{
+    list-style:none;
+}
+
+#head{
+    width: 100%;
+    height:1.98rem;
+    background:linear-gradient(266deg,rgba(31,126,112,1) 0%,rgba(4,16,15,1) 100%);
+    padding:0 0.24rem ;
+    display: flex;
+    justify-content:space-between;
+}
+
+#head #customerNum{
+    color: #fff;
+    font-size: 0.28rem;
+    padding-top:0.38rem;
+
+}
+#head .userNum{
+    font-size:0.4rem;
+    margin-bottom: 0.32rem;
+}
+#head #user{
+    color: #fff;
+    font-size: 0.3rem;
+    display: flex;
+    align-items: center;
+    height: 1.2rem;
+}
+#navbar{
+    width:3.34rem;
+    background:linear-gradient(360deg,rgba(5,19,18,1) 0%,rgba(32,127,113,1) 100%);
+    font-size: 0.24rem;
+    color:#333333;
+    text-align: center;
+    box-shadow:0 0.12rem 0.08rem rgba(0,0,0,0.16);
+    position: fixed;
+    height:100%;
+    top: 0;
+    z-index: 1000;
+    right: -3.34rem;
+}
+#body{
+    width:100%;
+    padding: 0 0.48rem;
+}
+#body #container{
+    margin-top: 0.88rem;
+}
+#body h1{
+    font-size: 0.32rem;
+    color: #333;
+    margin-top:0.28rem;
+    font-weight: bold;
+}
+#body #container{
+    width: 100%;
+}
+#body #container .highcharts-credits{
+    display:none;
+}
+#footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.24rem;
+    font-weight: bold;
+}
+#footer .refresh{
+    display: flex;
+    align-items: center;
+}
+#footer .refresh img{
+    width:0.6rem;
+    height:0.6rem;
+}
+#container .highcharts-color-0 {
+    fill:#FF983F;
+}
+
+.user {
+    height: 2.86rem;
+    border-bottom: 1px solid #ccc;
+    padding-top: 0.28rem;
+}
+
+.user .profilePhoto {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-size: 100%;
+    border-radius: 50%;
+    margin: 0 auto 0.2rem;
+}
+
+.user .userName {
+    color: #fff;
+    font-size: 0.32rem;
+    font-weight: bold;
+}
+
+ul li {
+    height: 0.88rem;
+    line-height: 0.88rem;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.24rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.button {
+    margin-top: 6.18rem;
+    border: 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.year {
+    font-size: 0.4rem;
+}
+

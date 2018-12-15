@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- status改为trace/debug/info/warn/error/fatal -->
+<Configuration status="debug" monitorInterval="60">
+    <Appenders>
+
+        <!-- Console输出 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n"/>
+        </Console>
+
+        <!-- INFO日志文件输出 -->
+        <RollingFile name="InfoRollingFile" filename="${sys:catalina.home}/logs/marsfoodlog/info.log"
+                     filepattern="${sys:catalina.home}/logs/marsfoodlog/$${date:yyyy-MM}/info.%d{yyyyMMdd}.%i.log.gz">
+            <ThresholdFilter level="INFO"/>
+            <PatternLayout>
+                <Charset>utf-8</Charset>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="50"/>
+        </RollingFile>
+
+        <!-- DEBUG日志文件输出 -->
+        <RollingFile name="DebugRollingFile" filename="${sys:catalina.home}/logs/marsfoodlog/debug.log"
+                     filepattern="${sys:catalina.home}/logs/marsfoodlog/$${date:yyyy-MM}/debug.%d{yyyyMMdd}.%i.log.gz">
+            <ThresholdFilter level="DEBUG"/>
+            <PatternLayout>
+                <Charset>utf-8</Charset>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="50"/>
+        </RollingFile>
+
+        <!-- ERROR日志文件输出 -->
+        <RollingFile name="ErrorRollingFile" filename="${sys:catalina.home}/logs/marsfoodlog/error.log"
+                     filepattern="${sys:catalina.home}/logs/marsfoodlog/$${date:yyyy-MM}/error.%d{yyyyMMdd}.%i.log.gz">
+            <ThresholdFilter level="ERROR"/>
+            <PatternLayout>
+                <Charset>utf-8</Charset>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c{1}:%L - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="50"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="DebugRollingFile"/>
+            <AppenderRef ref="InfoRollingFile"/>
+            <AppenderRef ref="ErrorRollingFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
