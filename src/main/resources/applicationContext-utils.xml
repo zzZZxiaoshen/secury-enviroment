@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    
+    <bean id="aliPayOrderClient" class="com.marsfood.utils.AliPayOrderClient">
+        <property name="format" value="${alipay.format}"/>
+        <property name="charset" value="${alipay.charset}"/>
+        <property name="signType" value="${alipay.signtype}"/>
+        <property name="notifyURL" value="${alipay.notifyurl}"/>
+        <property name="appId" value="${alipay.appid}"/>
+        <property name="subject" value="${alipay.subject}"/>
+        <property name="serverURL" value="${alipay.serverurl}"/>
+        <property name="publicKey" value="${alipay.publickey}"/>
+        <property name="privateKey" value="${alipay.privatekey}"/>
+    </bean>
+
+</beans>
+
+
+

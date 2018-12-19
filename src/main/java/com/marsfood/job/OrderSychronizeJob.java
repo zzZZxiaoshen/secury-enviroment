@@ -1,6 +1,7 @@
 package com.marsfood.job;
 
 import com.alibaba.fastjson.JSON;
+import com.marsfood.Service.OrderService;
 import com.marsfood.domain.DataSouce1OrderDetailDo;
 import com.marsfood.domain.dataSource1order.DataSouce1OrderDo;
 import com.marsfood.dto.OrderDetailDto;
@@ -89,7 +90,7 @@ import java.util.stream.Collectors;
                 start = 0;
 
                 List<OrderDetailDto> collect1 = orderDetails.parallelStream().skip(start).limit(limit).collect(Collectors.toList());
-                Response<Boolean> booleanResponse1 = orderService.addOrderDetail(collect);
+                Response<Boolean> booleanResponse1 = orderService.addOrderDetail(collect1);
                 if (booleanResponse.getCode() != ResponseCode.SUCCESS.getCode()) {
                     LOGGER.error("[orderSync] addOrderDetail error. params:[{}]. result:[{}]", JSON.toJSONString(collect1), JSON.toJSONString(booleanResponse1));
                     return;
