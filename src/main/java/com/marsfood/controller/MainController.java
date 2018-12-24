@@ -19,7 +19,6 @@ import java.util.Date;
  */
 @Controller
 public class MainController {
-
     /**
      * 进入登录页
      */
@@ -55,6 +54,10 @@ public class MainController {
 
     private String buildToken(String token) {
         return token + "|" + DateUtils.addDays(new Date(), 30).getTime();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(DigestUtils.md5Hex("123456"));
     }
 
 }

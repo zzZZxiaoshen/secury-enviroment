@@ -12,6 +12,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -39,7 +40,9 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         if (!BaseController.class.isAssignableFrom(handlerBean.getClass())) {
             return true;
         }
-        String token = request.getHeader(TOKEN_KEY);
+//        String token = request.getHeader(TOKEN_KEY);
+        String token = request.getParameter(TOKEN_KEY);
+
         if (StringUtils.isBlank(token)) {
             this.outputMessage(response, HttpBizCode.NOT_LOGIN.getCode(), "请先登录");
             return false;
