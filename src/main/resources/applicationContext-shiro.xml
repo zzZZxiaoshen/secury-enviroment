@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<bean id="subjectFactory" class="com.marsfood.framework.shiro.StatelessDefaultSubjectFactory"/>-->
+
+    <bean id="sessionManager" class="org.apache.shiro.session.mgt.DefaultSessionManager">
+        <property name="sessionValidationSchedulerEnabled" value="false"/>
+    </bean>
+
+    <bean id="statelessRealm" class="com.marsfood.framework.shiro.StatelessRealm"/>
+
+    <!--1. 配置 SecurityManager!-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="sessionManager" ref="sessionManager"/>
+      <!--  <property name="subjectDAO">
+            <bean class="org.apache.shiro.mgt.DefaultSubjectDAO">
+                <property name="sessionStorageEvaluator">
+                    <bean class="com.marsfood.framework.shiro.StatelessSessionStorageEvaluator"/>
+                </property>
+            </bean>
+        </property>-->
+        <property name="realm" ref="statelessRealm"/>
+    </bean>
+
+    <!--
+    6. 配置 ShiroFilter.
+    6.1 id 必须和 web.xml 文件中配置的 DelegatingFilterProxy 的 <filter-name> 一致.
+    若不一致, 则会抛出: NoSuchBeanDefinitionException. 因为 Shiro 会来 IOC 容器中查找和 <filter-name> 名字对应的 filter bean.
+    -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="filters">
+            <map>
+                <entry key="statelessFilter">
+                    <bean class="com.marsfood.framework.shiro.StatelessFilter"/>
+                </entry>
+                <entry key="statelessLoginFilter">
+                    <bean class="com.marsfood.framework.shiro.StatelessLoginFilter"/>
+                </entry>
+            </map>
+        </property>
+        <property name="filterChainDefinitionMap">
+            <map>
+                <entry key="/" value="anon"/>
+                <entry key="/login" value="anon"/>
+                <entry key="/password/edit" value="anon"/>
+                <entry key="/static/**" value="anon"/>
+                <entry key="/api/**" value="anon"/>
+                <entry key="/view/system/error" value="anon"/>
+                <entry key="/view/not/auth" value="anon"/>
+                <entry key="/view/login" value="statelessLoginFilter"/>
+                <entry key="/**" value="statelessFilter"/>
+            </map>
+        </property>
+    </bean>
+</beans>
+
+
+

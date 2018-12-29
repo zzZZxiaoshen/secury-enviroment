@@ -12,6 +12,7 @@
     <context:property-placeholder location="classpath:properties/database.properties"/>
 
     <import resource="classpath:applicationContext-mybatis.xml"/>
+    <import resource="applicationContext-aop.xml"/>
 
 </beans>
 

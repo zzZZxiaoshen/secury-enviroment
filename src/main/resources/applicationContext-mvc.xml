@@ -45,7 +45,8 @@
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/view/**"/>
             <mvc:exclude-mapping path="/user/login"/>
-            <bean class="com.marsfood.framework.interceptor.AuthorizationInterceptor"/>
+            <mvc:exclude-mapping path="/mylogin"/>
+            <bean class="com.marsfood.framework.interceptor.MyAuthorizationInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

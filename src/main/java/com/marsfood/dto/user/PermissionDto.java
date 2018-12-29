@@ -1,0 +1,91 @@
+package com.marsfood.dto.user;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * 权限实体类
+ * @author huangxingguang
+ * @date 2018/11/14
+ */
+public class PermissionDto implements Serializable {
+
+    /**
+     * 主键id
+     */
+    private Integer id;
+    /**
+     * 权限名称
+     */
+    private String name;
+    /**
+     * 权限介绍
+     */
+    private String description;
+    /**
+     * 资源
+     */
+    private String resource;
+
+    /**
+     * 非数据库字段，如用角色拥有>1
+     */
+    private Integer own;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof PermissionDto)) {
+            return false;
+        }
+        PermissionDto p = (PermissionDto) o;
+        return this.getResource().equals(p.getResource());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
+
+    public Integer getOwn() {
+        return own;
+    }
+
+    public void setOwn(Integer own) {
+        this.own = own;
+    }
+
+}
+

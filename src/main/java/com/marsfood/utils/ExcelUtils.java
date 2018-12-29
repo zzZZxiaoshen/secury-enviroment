@@ -63,7 +63,6 @@ public class ExcelUtils {
     /**
      * 创建订单excel
      */
-
     public static ByteArrayOutputStream createOderExcel(List<OrderDto> orderDtos) {
 
         Workbook workBook = createWorkBook();
@@ -88,8 +87,7 @@ public class ExcelUtils {
             createCell(sheet, cells);
         }
 
-        return  build(workBook);
+        return build(workBook);
     }
-
 
 }

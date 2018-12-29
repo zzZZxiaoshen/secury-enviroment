@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--用与手动回滚事物的模板类-->
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="txManager"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="DataSource"></property>
+    </bean>
+    <bean id="loggerAfterReturningAdvice" class="com.marsfood.framework.apectJ.LoggerLogspectJ"/>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <tx:advice id ="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="select*" read-only="true"/>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="insert*"/>
+            <tx:method name="add*"/>
+            <tx:method name="update*"/>
+            <tx:method name="delete*"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut expression="execution( * com.marsfood.Service.*.*( ..))" id="pointcut" />
+        <aop:advisor order="2" advice-ref="txAdvice" pointcut-ref="pointcut"/>
+        <!--配置后置通知  因为日志的切面类是我们自己写的所以我们不需要配置属性
+        事物的切面不是我们写的我们只需要配置属性即可 -->
+        <aop:advisor advice-ref="loggerAfterReturningAdvice" pointcut-ref="pointcut"/>
+    </aop:config>
+
+</beans>
