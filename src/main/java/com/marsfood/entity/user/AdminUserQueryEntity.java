@@ -1,10 +1,13 @@
 package com.marsfood.entity.user;
+
+import com.marsfood.entity.QueryParam;
+
 /**
  * 管理员查询条件
  * @author huangxingguang
  * @date 2018/11/14
  */
-public class AdminUserQueryEntity extends QueryParam{
+public class AdminUserQueryEntity extends QueryParam {
 
 
     /**

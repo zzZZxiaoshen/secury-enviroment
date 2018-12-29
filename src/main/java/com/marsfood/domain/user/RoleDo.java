@@ -1,7 +1,7 @@
 package com.marsfood.domain.user;
 
 
-import com.marsfood.entity.PermissionEntity;
+import com.marsfood.entity.user.PermissionEntity;
 
 import java.util.List;
 

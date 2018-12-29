@@ -1,6 +1,7 @@
 package com.marsfood.dto.user;
 
-import com.marsfood.entity.RoleEntity;
+
+import com.marsfood.entity.user.RoleEntity;
 
 /**
  * 管理员用户权限

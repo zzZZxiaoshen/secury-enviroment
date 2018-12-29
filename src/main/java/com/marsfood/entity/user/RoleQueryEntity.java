@@ -1,11 +1,13 @@
 package com.marsfood.entity.user;
 
+import com.marsfood.entity.QueryParam;
+
 /**
  * 角色查询条件
  * @author shenkai
  * @date 2018/11/08
  */
-public class RoleQueryEntity extends QueryParam{
+public class RoleQueryEntity extends QueryParam {
     /**
      * 查询角色名
      */

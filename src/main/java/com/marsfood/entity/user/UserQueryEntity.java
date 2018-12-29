@@ -1,5 +1,7 @@
 package com.marsfood.entity.user;
 
+import com.marsfood.entity.QueryParam;
+
 /**
  * 查询用户条件
  * @author huangxingguang

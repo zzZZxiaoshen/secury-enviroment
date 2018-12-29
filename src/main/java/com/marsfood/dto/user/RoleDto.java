@@ -1,7 +1,8 @@
 package com.marsfood.dto.user;
 
 
-import com.marsfood.entity.PermissionEntity;
+
+import com.marsfood.entity.user.PermissionEntity;
 
 import java.io.Serializable;
 import java.util.List;

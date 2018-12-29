@@ -1,6 +1,6 @@
 package com.marsfood.dto.user;
 
-import com.marsfood.utils.EmojiUtils;
+import com.github.binarywang.java.emoji.EmojiUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
@@ -88,9 +88,6 @@ public class UserDto implements Serializable {
     }
 
     public String getNickName() {
-        if (StringUtils.isNotBlank(this.nickName)) {
-            return EmojiUtils.emojiToStr(this.nickName);
-        }
         return nickName;
     }
 
