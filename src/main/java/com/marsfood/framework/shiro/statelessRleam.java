@@ -1,7 +1,6 @@
 package com.marsfood.framework.shiro;
 
 import com.marsfood.Service.AdminUserService;
-import com.marsfood.domain.user.AdminUserDo;
 import com.marsfood.dto.response.Response;
 import com.marsfood.dto.response.ResponseCode;
 import com.marsfood.dto.user.AdminUserDto;
@@ -21,7 +20,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
